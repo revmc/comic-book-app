@@ -26,4 +26,11 @@ router.put('/:id', function(req, res, next) {
 	});
 });
 
+router.delete('/:id', function(req, res, next) {
+	ComicBook.findByIdAndRemove(req.params.id, null, function(err, post) {
+		if (err) return next(err);
+		res.json(post);
+	});
+});
+
 module.exports = router;
